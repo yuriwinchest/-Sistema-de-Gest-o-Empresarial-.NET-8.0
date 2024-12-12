@@ -1,0 +1,163 @@
+# Sistema de Gestão Empresarial .NET 8.0
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f0f0; }
+        .window {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 20px auto;
+            width: 800px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .title-bar {
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .menu-bar {
+            background: #34495e;
+            color: white;
+            padding: 8px;
+            display: flex;
+            gap: 20px;
+        }
+        .menu-item { cursor: pointer; }
+        .content {
+            padding: 20px;
+            min-height: 400px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .grid {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .grid th, .grid td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .grid th {
+            background: #f5f5f5;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Tela de Login -->
+    <div class="window">
+        <div class="title-bar">Login do Sistema</div>
+        <div class="content">
+            <div class="form-group">
+                <label>Usuário:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Senha:</label>
+                <input type="password" class="form-control">
+            </div>
+            <button class="button">Entrar</button>
+        </div>
+    </div>
+
+    <!-- Tela Principal -->
+    <div class="window">
+        <div class="title-bar">
+            Sistema de Gestão Empresarial
+            <div>Usuário: Admin</div>
+        </div>
+        <div class="menu-bar">
+            <div class="menu-item">Cadastros</div>
+            <div class="menu-item">Vendas</div>
+            <div class="menu-item">Relatórios</div>
+            <div class="menu-item">Configurações</div>
+        </div>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Vendas do Dia</h3>
+                <h2>R$ 15.780,00</h2>
+            </div>
+            <div class="card">
+                <h3>Pedidos Pendentes</h3>
+                <h2>23</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela de Cadastro -->
+    <div class="window">
+        <div class="title-bar">Cadastro de Clientes</div>
+        <div class="content">
+            <div class="form-group">
+                <label>Nome:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>CPF/CNPJ:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>E-mail:</label>
+                <input type="email" class="form-control">
+            </div>
+            <button class="button">Salvar</button>
+
+            <table class="grid">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF/CNPJ</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Empresa XYZ Ltda</td>
+                    <td>12.345.678/0001-90</td>
+                    <td>
+                        <button class="button">Editar</button>
+                        <button class="button" style="background: #e74c3c;">Excluir</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
