@@ -1,0 +1,123 @@
+ClientesForm.cs
+
+
+// ClientesForm.cs
+public partial class ClientesForm : Form
+{
+    public ClientesForm()
+    {
+        InitializeComponent();
+        ConfigureForm();
+    }
+
+    private void InitializeComponent()
+    {
+        this.txtNome = new TextBox();
+        this.txtCpfCnpj = new TextBox();
+        this.txtEmail = new TextBox();
+        this.btnSalvar = new Button();
+        this.dgvClientes = new DataGridView();
+        
+        // Configurações do form
+        this.Text = "Cadastro de Clientes";
+        this.Size = new Size(800, 600);
+        this.StartPosition = FormStartPosition.CenterScreen;
+
+        // Campos do formulário
+        ConfigureFields();
+
+        // Grid de dados
+        ConfigureGrid();
+
+        this.Controls.AddRange(new Control[] { 
+            txtNome, 
+            txtCpfCnpj, 
+            txtEmail, 
+            btnSalvar,
+            dgvClientes 
+        });
+    }
+
+    private void ConfigureFields()
+    {
+        // Nome
+        var lblNome = new Label
+        {
+            Text = "Nome:",
+            Location = new Point(20, 20),
+            AutoSize = true
+        };
+
+        txtNome.Location = new Point(20, 40);
+        txtNome.Size = new Size(300, 23);
+
+        // CPF/CNPJ
+        var lblCpfCnpj = new Label
+        {
+            Text = "CPF/CNPJ:",
+            Location = new Point(20, 70),
+            AutoSize = true
+        };
+
+        txtCpfCnpj.Location = new Point(20, 90);
+        txtCpfCnpj.Size = new Size(200, 23);
+
+        // Email
+        var lblEmail = new Label
+        {
+            Text = "E-mail:",
+            Location = new Point(20, 120),
+            AutoSize = true
+        };
+
+        txtEmail.Location = new Point(20, 140);
+        txtEmail.Size = new Size(300, 23);
+
+        // Botão Salvar
+        btnSalvar.Text = "Salvar";
+        btnSalvar.Location = new Point(20, 180);
+        btnSalvar.Size = new Size(100, 30);
+        btnSalvar.Click += BtnSalvar_Click;
+
+        this.Controls.AddRange(new Control[] { 
+            lblNome, lblCpfCnpj, lblEmail 
+        });
+    }
+
+    private void ConfigureGrid()
+    {
+        dgvClientes.Location = new Point(20, 230);
+        dgvClientes.Size = new Size(740, 300);
+        dgvClientes.AllowUserToAddRows = false;
+        dgvClientes.AllowUserToDeleteRows = false;
+        dgvClientes.ReadOnly = true;
+        dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+        dgvClientes.Columns.AddRange(new DataGridViewColumn[]
+        {
+            new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "ID", Width = 50 },
+            new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Nome", Width = 200 },
+            new DataGridViewTextBoxColumn { Name = "CpfCnpj", HeaderText = "CPF/CNPJ", Width = 150 },
+            new DataGridViewTextBoxColumn { Name = "Email", HeaderText = "E-mail", Width = 200 }
+        });
+
+        // Adicionar botões de ação
+        var colAcoes = new DataGridViewButtonColumn
+        {
+            HeaderText = "Ações",
+            Width = 100
+        };
+        dgvClientes.Columns.Add(colAcoes);
+    }
+
+    private void BtnSalvar_Click(object sender, EventArgs e)
+    {
+        // Implementar salvamento
+    }
+
+    private TextBox txtNome;
+    private TextBox txtCpfCnpj;
+    private TextBox txtEmail;
+    private Button btnSalvar;
+    private DataGridView dgvClientes;
+}

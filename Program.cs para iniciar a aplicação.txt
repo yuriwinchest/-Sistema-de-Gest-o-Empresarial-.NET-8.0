@@ -1,0 +1,11 @@
+Program.cs para iniciar a aplicação:
+
+static class Program
+{
+    [STAThread]
+    static void Main()
+    {
+        ApplicationConfiguration.Initialize();
+        Application.Run(new LoginForm());
+    }
+}

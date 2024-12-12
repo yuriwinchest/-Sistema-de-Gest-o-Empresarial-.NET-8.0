@@ -1,0 +1,81 @@
+ LoginForm.cs
+// LoginForm.cs
+public partial class LoginForm : Form
+{
+    public LoginForm()
+    {
+        InitializeComponent();
+        ConfigureForm();
+    }
+
+    private void InitializeComponent()
+    {
+        this.txtUsuario = new TextBox();
+        this.txtSenha = new TextBox();
+        this.btnEntrar = new Button();
+        this.lblUsuario = new Label();
+        this.lblSenha = new Label();
+
+        // Configurações do form
+        this.Text = "Login do Sistema";
+        this.Size = new Size(400, 250);
+        this.StartPosition = FormStartPosition.CenterScreen;
+        this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        this.MaximizeBox = false;
+
+        // Label Usuário
+        this.lblUsuario.Text = "Usuário:";
+        this.lblUsuario.Location = new Point(50, 50);
+        this.lblUsuario.AutoSize = true;
+
+        // TextBox Usuário
+        this.txtUsuario.Location = new Point(50, 70);
+        this.txtUsuario.Size = new Size(280, 23);
+
+        // Label Senha
+        this.lblSenha.Text = "Senha:";
+        this.lblSenha.Location = new Point(50, 100);
+        this.lblSenha.AutoSize = true;
+
+        // TextBox Senha
+        this.txtSenha.Location = new Point(50, 120);
+        this.txtSenha.Size = new Size(280, 23);
+        this.txtSenha.PasswordChar = '*';
+
+        // Botão Entrar
+        this.btnEntrar.Text = "Entrar";
+        this.btnEntrar.Location = new Point(50, 160);
+        this.btnEntrar.Size = new Size(280, 30);
+        this.btnEntrar.Click += BtnEntrar_Click;
+
+        // Adiciona controles ao form
+        this.Controls.AddRange(new Control[] { 
+            lblUsuario, txtUsuario, 
+            lblSenha, txtSenha, 
+            btnEntrar 
+        });
+    }
+
+    private void BtnEntrar_Click(object sender, EventArgs e)
+    {
+        if (ValidarLogin())
+        {
+            var mainForm = new MainForm();
+            this.Hide();
+            mainForm.ShowDialog();
+            this.Close();
+        }
+    }
+
+    private bool ValidarLogin()
+    {
+        // Implementar validação real
+        return !string.IsNullOrEmpty(txtUsuario.Text) && !string.IsNullOrEmpty(txtSenha.Text);
+    }
+
+    private TextBox txtUsuario;
+    private TextBox txtSenha;
+    private Button btnEntrar;
+    private Label lblUsuario;
+    private Label lblSenha;
+}

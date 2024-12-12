@@ -1,0 +1,113 @@
+MainForm.cs
+// MainForm.cs
+public partial class MainForm : Form
+{
+    public MainForm()
+    {
+        InitializeComponent();
+        ConfigureForm();
+    }
+
+    private void InitializeComponent()
+    {
+        this.menuStrip = new MenuStrip();
+        this.statusStrip = new StatusStrip();
+        this.pnlDashboard = new Panel();
+
+        // Configurações do form
+        this.Text = "Sistema de Gestão Empresarial";
+        this.Size = new Size(1024, 768);
+        this.StartPosition = FormStartPosition.CenterScreen;
+
+        // Menu principal
+        ConfigureMenu();
+
+        // Dashboard
+        ConfigureDashboard();
+
+        // Status Strip
+        ConfigureStatusStrip();
+
+        this.Controls.AddRange(new Control[] { 
+            menuStrip, 
+            pnlDashboard,
+            statusStrip 
+        });
+    }
+
+    private void ConfigureMenu()
+    {
+        var menuCadastros = new ToolStripMenuItem("Cadastros");
+        var menuVendas = new ToolStripMenuItem("Vendas");
+        var menuRelatorios = new ToolStripMenuItem("Relatórios");
+        var menuConfig = new ToolStripMenuItem("Configurações");
+
+        menuCadastros.DropDownItems.Add("Clientes", null, MenuClientes_Click);
+        menuCadastros.DropDownItems.Add("Produtos", null, MenuProdutos_Click);
+
+        menuStrip.Items.AddRange(new ToolStripItem[] {
+            menuCadastros,
+            menuVendas,
+            menuRelatorios,
+            menuConfig
+        });
+
+        this.MainMenuStrip = menuStrip;
+    }
+
+    private void ConfigureDashboard()
+    {
+        pnlDashboard.Dock = DockStyle.Fill;
+        
+        var cardVendas = new Panel
+        {
+            Size = new Size(300, 150),
+            Location = new Point(20, 20),
+            BackColor = Color.White
+        };
+
+        var lblVendasTitulo = new Label
+        {
+            Text = "Vendas do Dia",
+            Location = new Point(10, 10),
+            AutoSize = true
+        };
+
+        var lblVendasValor = new Label
+        {
+            Text = "R$ 15.780,00",
+            Location = new Point(10, 40),
+            Font = new Font(this.Font.FontFamily, 20, FontStyle.Bold),
+            AutoSize = true
+        };
+
+        cardVendas.Controls.AddRange(new Control[] { 
+            lblVendasTitulo, 
+            lblVendasValor 
+        });
+
+        pnlDashboard.Controls.Add(cardVendas);
+    }
+
+    private void ConfigureStatusStrip()
+    {
+        var lblUsuario = new ToolStripStatusLabel();
+        lblUsuario.Text = "Usuário: Admin";
+        statusStrip.Items.Add(lblUsuario);
+    }
+
+    private void MenuClientes_Click(object sender, EventArgs e)
+    {
+        var formClientes = new ClientesForm();
+        formClientes.ShowDialog();
+    }
+
+    private void MenuProdutos_Click(object sender, EventArgs e)
+    {
+        // Implementar
+    }
+
+    private MenuStrip menuStrip;
+    private StatusStrip statusStrip;
+    private Panel pnlDashboard;
+}
